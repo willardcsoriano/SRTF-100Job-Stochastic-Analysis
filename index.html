@@ -41,19 +41,21 @@
 <body class="bg-gray-100 min-h-screen">
 
     <!-- HEADER -->
-    <header class="bg-gray-800 text-white shadow-lg p-4 flex flex-col md:flex-row justify-between items-start md:items-center text-sm">
-        
-        <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-6 mb-2 md:mb-0">
-            <p>Name: <span class="font-bold">Willard Soriano</span></p>
-            <p>Section: <span class="font-bold">CSS142L_FOPI01_4Q2324</span></p>
-        </div>
-        
-        <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-6 md:text-right">
-            <p>Course: <span class="font-bold">Modeling and Simulation Theory Laboratory</span></p>
-            <p>Activity: <span class="font-bold">FA1.1</span></p>
-        </div>
+<header class="bg-gray-800 text-white shadow-lg px-6 py-4 flex flex-wrap justify-between items-center gap-y-2 text-sm">
 
-    </header>
+    <div class="flex items-center space-x-2">
+        <span class="text-primary font-extrabold text-xl tracking-wide">SRTF</span>
+        <span class="text-gray-400 font-medium">Scheduler</span>
+    </div>
+
+    <nav class="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-400 text-xs sm:text-sm">
+        <span class="hidden sm:inline text-gray-600">|</span>
+        <p class="whitespace-nowrap">Modeling & Simulation</p>
+        <span class="text-gray-600">|</span>
+        <p class="whitespace-nowrap">CPU Scheduling Algorithms</p>
+    </nav>
+
+</header>
 
     <main class="container mx-auto p-6">
 
@@ -151,6 +153,24 @@
         </section>
 
     </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-xs sm:text-sm px-6 py-4 mt-8 flex flex-wrap justify-between items-center gap-y-2">
+        
+        <p>Built by <span class="text-white font-semibold">Willard Soriano</span></p>
+
+        <div class="flex items-center gap-x-4">
+            <a href="https://github.com/willardcsoriano" target="_blank" rel="noopener noreferrer"
+                class="hover:text-white transition duration-200">
+                GitHub
+            </a>
+            <span class="text-gray-600">|</span>
+            <a href="https://linkedin.com/in/willardcsoriano" target="_blank" rel="noopener noreferrer"
+                class="hover:text-white transition duration-200">
+                LinkedIn
+            </a>
+        </div>
+
+    </footer>
 
     <!-- Load Modular JS -->
     <script type="module" src="./js/main.js"></script>
