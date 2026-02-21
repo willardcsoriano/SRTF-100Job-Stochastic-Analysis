@@ -16,8 +16,8 @@ export function attachDOMEvents({ onRunSimulation, onSort }) {
         toggleBtn.onclick = () => {
             expDiv.classList.toggle("hidden");
             toggleBtn.textContent = expDiv.classList.contains("hidden")
-                ? "Show Explanations"
-                : "Hide Explanations";
+                ? "Show Legend"
+                : "Hide Legend";
         };
     }
 
