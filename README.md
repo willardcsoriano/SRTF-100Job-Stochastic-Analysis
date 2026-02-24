@@ -16,7 +16,7 @@ SRTF is a **preemptive algorithm** that always executes the process with the **s
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 - [Simulation Parameters](#simulation-parameters)  
 - [Key Features](#key-features)  
 - [How It Works](#how-it-works)  
@@ -171,7 +171,7 @@ SRTF-100Job-Stochastic-Analysis/
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License**.  
 See the full license text in the [LICENSE](LICENSE) file.
