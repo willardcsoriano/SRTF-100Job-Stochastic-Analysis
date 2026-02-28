@@ -1,178 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRTF Scheduling Simulation</title>
-
-    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
-
-    <link rel="stylesheet" type="text/css" href="css/styles.css"> 
-
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- MathJax -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            }
-        };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-
-    <!-- Tailwind custom config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#3b82f6",
-                        secondary: "#10b981",
-                        idle: "#9ca3af"
-                    }
-                }
-            }
-        };
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SRTF Scheduling Simulation</title>
+<link rel="icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="bg-gray-100 min-h-screen">
+<body>
 
-    <!-- HEADER -->
-<header class="bg-gray-800 text-white shadow-lg px-6 py-4 flex flex-wrap justify-between items-center gap-y-2 text-sm">
-
-    <div class="flex items-center space-x-2">
-        <span class="text-primary font-extrabold text-xl tracking-wide">SRTF</span>
-        <span class="text-gray-400 font-medium">Scheduler</span>
-    </div>
-
-    <nav class="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-400 text-xs sm:text-sm">
-        <span class="hidden sm:inline text-gray-600">|</span>
-        <p class="whitespace-nowrap">Modeling & Simulation</p>
-        <span class="text-gray-600">|</span>
-        <p class="whitespace-nowrap">CPU Scheduling Algorithms</p>
-    </nav>
-
-</header>
-
-    <main class="container mx-auto p-6">
-
-        <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-2">
-            <span class="text-primary">SRTF</span> Scheduling Simulation ⏱️
-        </h1>
-
-        <!-- INTRO + EXPLANATION PANEL -->
-        <section class="text-center text-gray-600 mb-6 bg-blue-100/50 p-3 rounded-lg border border-blue-200">
-            <h2 class="text-xl font-semibold text-gray-700 mb-2">Simulation Objective: SRTF Analysis</h2>
-            
-            <p class="text-sm mb-3 font-semibold text-gray-800">
-                This tool simulates <b>100 randomly generated jobs</b> to demonstrate the efficiency of the <b>Shortest-Remaining-Time-First (SRTF)</b> scheduling algorithm.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-blue-300 pt-3">
-                
-                <div class="text-left p-2 bg-blue-50 rounded-lg">
-                    <p class="font-bold text-gray-800 mb-1">How SRTF Works (Preemption):</p>
-                    <p class="text-xs">SRTF is a <b>preemptive</b> CPU scheduling algorithm. It always runs the job that needs the <b>least amount of time remaining</b> to finish. If a shorter job arrives, it immediately interrupts (preempts) the running job. </p>
-                </div>
-
-                <div class="text-left p-2 bg-blue-50 rounded-lg">
-                    <p class="font-bold text-gray-800 mb-1">Job Parameters & Goal Metrics:</p>
-                    <ul class="list-disc list-inside ml-4 text-xs space-y-0.5">
-                        <li><b>Burst Time (BT):</b> Randomly set between 1 and 10.</li>
-                        <li><b>Arrival Time (AT):</b> Randomly set between 1 and 7.</li>
-                        <li>Goal: Minimize Average <b>Waiting Time (WT)</b> and <b>Turnaround Time (TAT)</b>.</li>
-                    </ul>
-                </div>
-
-                <div class="text-left p-2 bg-blue-50 rounded-lg">
-                    <p class="font-bold text-gray-800 mb-1">Real-Life Application:</p>
-                    <p class="text-xs">
-                        This scheduling concept is critical in <b>Real-Time Operating Systems (RTOS)</b> used in applications like <b>avionics, industrial control, and robotics</b>. By prioritizing the shortest task remaining, SRTF helps guarantee that time-critical tasks (like sensor readings) are executed with the lowest possible latency.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- BUTTONS + EXPLANATIONS -->
-        <section class="bg-white shadow-xl rounded-lg p-6 mb-8">
-
-            <div class="flex justify-center space-x-4 mb-6">
-                <!-- No inline onclick attribute -->
-                <button 
-                    id="runSimulationButton"
-                    class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300">
-                    Run 100-Job Simulation
-                </button>
-
-                <button 
-                    id="toggleExplanations"
-                    class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300">
-                    Show Legend
-                </button>
-            </div>
-
-            <div id="explanations" class="hidden border-t pt-4 border-gray-200">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-700 mb-3 border-b pb-1 border-secondary">📊 Column Definitions</h2>
-                        <ul class="list-disc list-inside space-y-2 text-gray-600">
-                            <li><b>Job (PID)</b>: Unique identifier.</li>
-                            <li><b>Arrival Time (AT)</b>: Time job arrives (1-7).</li>
-                            <li><b>Burst Time (BT)</b>: Total execution time required (1-10).</li>
-                            <li><b>Completion Time (CT)</b>: $\text{AT} + \text{TAT}$.</li>
-                            <li><b>Turnaround Time (TAT)</b>: $\text{CT} - \text{AT}$. Total time in system.</li>
-                            <li><b>Waiting Time (WT)</b>: $\text{TAT} - \text{BT}$. Time spent idle in the queue.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-700 mb-3 border-b pb-1 border-secondary">🧠 SRTF Algorithm Logic</h2>
-                        <p class="text-gray-600 mb-3">
-                            The <b>Shortest-Remaining-Time-First (SRTF)</b> algorithm is a <b>preemptive</b> scheduler. It always executes the job currently in the ready queue with the shortest time *remaining* to completion.
-                        </p>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-600">
-                            <li>Check for new arrivals at the current time $t$.</li>
-                            <li>Select the job with the minimum $\text{Remaining Time}$ from all arrived jobs.</li>
-                            <li>Execute for 1 time unit.</li>
-                            <li>If a new job arrives with a shorter $\text{Remaining Time}$, the CPU preempts the current job and switches.</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- RESULTS PANEL -->
-        <section id="results">
-            <div class="text-center p-10 bg-white rounded-lg shadow-inner text-gray-500 italic border-dashed border-2 border-gray-300">
-                <p class="text-lg font-semibold mb-2 text-gray-700">Ready to Analyze Scheduling Efficiency?</p>
-                <p>Click the "Run 100-Job Simulation" button above to generate random jobs and view the calculated <b>Average Waiting Time</b> and the execution sequence.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-gray-800 text-gray-400 text-xs sm:text-sm px-6 py-4 mt-8 flex flex-wrap justify-between items-center gap-y-2">
-        
-        <p>Built by <span class="text-white font-semibold">Willard Soriano</span></p>
-
-        <div class="flex items-center gap-x-4">
-            <a href="https://github.com/willardcsoriano" target="_blank" rel="noopener noreferrer"
-                class="hover:text-white transition duration-200">
-                GitHub
-            </a>
-            <span class="text-gray-600">|</span>
-            <a href="https://linkedin.com/in/willardcsoriano" target="_blank" rel="noopener noreferrer"
-                class="hover:text-white transition duration-200">
-                LinkedIn
-            </a>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-badge">S</div>
+        <div>
+          <div class="logo-text">SRTF Scheduler</div>
+          <div class="logo-sub">CPU Scheduling Simulator</div>
         </div>
+      </div>
+      <div class="header-tag">OS · Modeling & Simulation</div>
+    </div>
+  </header>
 
-    </footer>
+  <main id="app"></main>
 
-    <!-- Load Modular JS -->
-    <script type="module" src="./js/main.js"></script>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">Built by <span>Willard Soriano</span></div>
+      <div class="footer-links">
+        <a href="https://github.com/willardcsoriano">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
+          </svg>
+          GitHub
+        </a>
+        <span class="divider">|</span>
+        <a href="https://linkedin.com/in/willardcsoriano">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/main.js"></script>
+
 </body>
 </html>

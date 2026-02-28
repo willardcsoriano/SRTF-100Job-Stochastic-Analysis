@@ -1,45 +1,45 @@
 // js/ui/tableRenderer.js
 
 export function renderTable(results, sortHandlerName = "sortResults") {
-    let rows = results
-        .map((p, index) => {
-            const rowColor = index % 2 === 0 ? "bg-white" : "bg-gray-50";
-            return `
-                <tr class="${rowColor} border-b text-center">
-                    <td class="px-6 py-2">P${p.pid}</td>
-                    <td class="px-6 py-2">${p.art}</td>
-                    <td class="px-6 py-2">${p.bt}</td>
-                    <td class="px-6 py-2">${p.ct}</td>
-                    <td class="px-6 py-2 font-semibold">${p.tat}</td>
-                    <td class="px-6 py-2 text-secondary font-semibold">${p.wt}</td>
-                </tr>
-            `;
-        })
-        .join("");
+    const headers = [
+        { label: 'Job',        key: 'Job' },
+        { label: 'Arrival',    key: 'Arrival' },
+        { label: 'Burst',      key: 'Burst' },
+        { label: 'Completion', key: 'Completion' },
+        { label: 'TAT',        key: 'Turnaround' },
+        { label: 'WT',         key: 'Waiting' },
+    ];
+
+    const headHTML = headers.map(h => `
+        <th class="t-th" onclick="${sortHandlerName}('${h.key}')" title="Sort by ${h.label}">
+            ${h.label} <span class="t-sort-icon">↕</span>
+        </th>
+    `).join('');
+
+    const rowsHTML = results.map((p, i) => `
+        <tr class="t-row ${i % 2 === 0 ? '' : 't-row-alt'}">
+            <td class="t-td t-pid">P${p.pid}</td>
+            <td class="t-td">${p.art}</td>
+            <td class="t-td">${p.bt}</td>
+            <td class="t-td">${p.ct}</td>
+            <td class="t-td t-tat">${p.tat}</td>
+            <td class="t-td t-wt">${p.wt}</td>
+        </tr>
+    `).join('');
 
     return `
-        <div class="bg-white shadow-xl rounded-lg p-6 overflow-x-auto">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">Detailed Process Table</h2>
-
-            <div class="max-h-96 overflow-y-auto">
-
-            <table class="w-full text-sm text-left text-gray-500">
-                <thead class="bg-gray-50 sticky-header">
-                    <tr>
-                        <th class="px-6 py-3 cursor-pointer" onclick="${sortHandlerName}('Job')">Job</th>
-                        <th class="px-6 py-3 cursor-pointer" onclick="${sortHandlerName}('Arrival')">Arrival</th>
-                        <th class="px-6 py-3 cursor-pointer" onclick="${sortHandlerName}('Burst')">Burst</th>
-                        <th class="px-6 py-3 cursor-pointer" onclick="${sortHandlerName}('Completion')">Completion</th>
-                        <th class="px-6 py-3 cursor-pointer" onclick="${sortHandlerName}('Turnaround')">TAT</th>
-                        <th class="px-6 py-3 cursor-pointer" onclick="${sortHandlerName}('Waiting')">WT</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    ${rows}
-                </tbody>
-            </table>
-
+        <div class="r-card">
+            <div class="r-card-header">
+                <div class="r-card-line" style="background:var(--accent2)"></div>
+                <div class="r-card-title">Process Table <span class="r-card-sub">— Click headers to sort</span></div>
+            </div>
+            <div class="r-card-body" style="padding-top:0;">
+                <div class="t-scroll">
+                    <table class="t-table">
+                        <thead><tr>${headHTML}</tr></thead>
+                        <tbody>${rowsHTML}</tbody>
+                    </table>
+                </div>
             </div>
         </div>
     `;
