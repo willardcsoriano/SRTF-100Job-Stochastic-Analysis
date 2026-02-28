@@ -1,4 +1,4 @@
-# ⏱️ SRTF-100Job-Stochastic-Analysis
+# SRTF-100Job-Stochastic-Analysis
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
@@ -12,11 +12,11 @@ This project provides a **web-based simulation and statistical analysis** of the
 
 SRTF is a **preemptive algorithm** that always executes the process with the **shortest remaining burst time**, making it one of the most optimal algorithms for reducing waiting time.
 
-🔗 **Live Demo:** https://willardcsoriano.github.io/SRTF-100Job-Stochastic-Analysis/
+**Live Demo:** https://willardcsoriano.github.io/SRTF-100Job-Stochastic-Analysis/
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 - [Simulation Parameters](#simulation-parameters)  
 - [Key Features](#key-features)  
 - [How It Works](#how-it-works)  
@@ -29,7 +29,7 @@ SRTF is a **preemptive algorithm** that always executes the process with the **s
 
 ---
 
-## 📊 Simulation Parameters
+## Simulation Parameters
 
 **Job Count:** 100 randomized processes  
 **Burst Time (BT):** 1–10 time units  
@@ -40,7 +40,7 @@ Each simulation run produces a unique dataset, making the tool useful for stocha
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Automated Large-Scale Job Generation**  
   Generates 100 jobs per run with randomized arrival and burst times.
@@ -66,7 +66,7 @@ Each simulation run produces a unique dataset, making the tool useful for stocha
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 The SRTF engine performs a time-driven simulation:
 
@@ -79,7 +79,7 @@ The SRTF engine performs a time-driven simulation:
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 Clone the repository:
 
@@ -100,7 +100,7 @@ Visit:
 
 ---
 
-## 🚀 Usage
+## Usage
 
 1. Open the web interface.  
 2. Click **“Run 100-Job Simulation”**.  
@@ -117,7 +117,7 @@ Each click generates a **new randomized dataset**.
 
 ---
 
-## 📈 Example Output
+## Example Output
 
 A typical result displays:
 
@@ -130,7 +130,7 @@ A typical result displays:
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **HTML5** – Structure  
 - **CSS / TailwindCSS** – Styling + Responsive layout  
@@ -140,7 +140,7 @@ A typical result displays:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 SRTF-100Job-Stochastic-Analysis/
@@ -171,7 +171,7 @@ SRTF-100Job-Stochastic-Analysis/
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License**.  
 See the full license text in the [LICENSE](LICENSE) file.
