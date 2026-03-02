@@ -3,7 +3,7 @@
 export function renderSummary({ avgWT, avgTAT }) {
     return `
         <div class="r-summary">
-            <div class="r-summary-label">// Simulation Complete</div>
+            <div class="r-summary-label">Simulation Complete</div>
             <h2 class="r-summary-title">Summary Statistics</h2>
 
             <div class="r-summary-stats">

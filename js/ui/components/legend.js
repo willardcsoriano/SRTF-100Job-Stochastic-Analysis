@@ -14,7 +14,7 @@ export function renderLegend() {
                         <div class="legend-grid">
 
                             <div class="legend-card">
-                                <h3>// Process Table Fields</h3>
+                                <h3>Process Table Fields</h3>
                                 <div class="legend-row">
                                     <span class="legend-key">PID</span>
                                     <span class="legend-val">Unique job identifier</span>
@@ -45,7 +45,7 @@ export function renderLegend() {
                             </div>
 
                             <div class="legend-card">
-                                <h3>// Scheduler Decision Engine</h3>
+                                <h3>Scheduler Decision Engine</h3>
                                 <div class="steps-list">
                                     <div class="step-item">
                                         <div class="step-num">1</div>
