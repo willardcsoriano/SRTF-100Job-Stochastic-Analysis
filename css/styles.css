@@ -962,3 +962,12 @@ canvas {
   }
 
 }
+
+/* ===== MOBILE OVERFLOW FINAL FIX ===== */
+
+.wrap,
+.header-inner,
+.footer-inner,
+.section {
+  max-width: 100%;
+}
