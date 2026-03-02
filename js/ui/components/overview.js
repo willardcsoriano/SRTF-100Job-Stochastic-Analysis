@@ -25,7 +25,7 @@ export function renderOverview() {
                                 <strong>pause</strong> so the quicker one completes first.
                             </p>
                             <div class="analogy-box">
-                                <div class="label">// Everyday Analogy</div>
+                                <div class="label">Everyday Analogy</div>
                                 <p>
                                     Imagine a cashier. If someone buying only one item arrives
                                     while another customer has a full cart — letting the quick
@@ -36,7 +36,7 @@ export function renderOverview() {
 
                         <div>
                             <div class="observe-list">
-                                <div class="label">// Observe As It Runs</div>
+                                <div class="label">Observe As It Runs</div>
                                 <div class="observe-item">
                                     <div class="dot"></div>
                                     Which jobs execute immediately after arrival
