@@ -807,3 +807,148 @@ footer {
 .t-pid { color: var(--white); font-weight: 700; }
 .t-tat { color: var(--warn); }
 .t-wt  { color: var(--accent); }
+
+/* =====================================================
+   RESPONSIVE SYSTEM
+===================================================== */
+
+
+/* ---------- GLOBAL SCALING ---------- */
+
+html {
+  font-size: clamp(14px, 0.9vw, 16px);
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal overflow */
+.wrap,
+.header-inner,
+.footer-inner {
+  width: 100%;
+  padding-inline: clamp(16px, 4vw, 24px);
+}
+
+/* Tables scroll instead of breaking layout */
+.t-table {
+  min-width: 600px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+@media (max-width: 1024px) {
+
+  .hero {
+    padding: 60px 20px 40px;
+  }
+
+  .r-summary-stats {
+    flex-wrap: wrap;
+  }
+
+  .r-stat-card {
+    min-width: 140px;
+  }
+
+}
+
+
+/* =====================================================
+   LARGE PHONES
+===================================================== */
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .header-inner {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .header-tag {
+    display: none;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 48px 16px;
+  }
+
+  .hero h1 {
+    line-height: 1.1;
+  }
+
+  /* CARD SPACING */
+  .card-body {
+    padding: 20px;
+  }
+
+  /* SUMMARY STATS STACK */
+  .r-summary-stats {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .r-stat-divider {
+    display: none;
+  }
+
+  /* LEGEND GRID */
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FOOTER */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* BUTTON STACK */
+  .controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* GANTT CHART MOBILE SCROLL */
+  .g-chart {
+    overflow-x: auto;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+@media (max-width: 480px) {
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 0 16px;
+  }
+
+}
