@@ -41,11 +41,17 @@ export function renderGantt(ganttData, maxTime = 20) {
         <div class="r-card" style="margin-bottom:24px;">
             <div class="r-card-header">
                 <div class="r-card-line"></div>
-                <div class="r-card-title">Gantt Chart <span class="r-card-sub">— First ${maxTime} Time Units</span></div>
+                <div class="r-card-title">
+                    Gantt Chart 
+                    <span class="r-card-sub">— First ${maxTime} Time Units</span>
+                </div>
             </div>
+
             <div class="r-card-body">
-                <div class="g-chart">${blocksHTML}</div>
-                <div class="g-axis">${axisHTML}</div>
+                <div class="g-scroll">
+                    <div class="g-chart">${blocksHTML}</div>
+                    <div class="g-axis">${axisHTML}</div>
+                </div>
             </div>
         </div>
     `;

@@ -709,52 +709,93 @@ footer {
   color: var(--muted);
 }
 
-/* ── Gantt Chart ── */
+/* ─────────────────────────────
+   GANTT CHART (Responsive + Scrollable)
+───────────────────────────── */
+
+/* Scroll wrapper (wrap .g-chart + .g-axis inside this) */
+.g-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 6px; /* space for scrollbar */
+}
+
+/* Optional custom scrollbar (matches table style) */
+.g-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.g-scroll::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+.g-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Chart row */
 .g-chart {
   display: flex;
   height: 52px;
+  min-width: 700px; /* prevents timeline compression */
   border-radius: 6px;
-  overflow: hidden;
   border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--surface2);
 }
 
+/* Individual block */
 .g-block {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-right: 1px solid rgba(0,0,0,0.2);
-  transition: filter 0.15s;
+  transition: filter 0.15s ease;
   cursor: default;
   min-width: 2px;
+  position: relative;
 }
 
-.g-block:hover { filter: brightness(1.15); }
-.g-block:last-child { border-right: none; }
+.g-block:hover {
+  filter: brightness(1.15);
+}
 
+.g-block:last-child {
+  border-right: none;
+}
+
+/* Block label */
 .g-block-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: clamp(9px, 1vw, 11px);
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 4px;
+  pointer-events: none;
 }
 
+/* Time axis */
 .g-axis {
   position: relative;
   height: 24px;
-  margin-top: 4px;
+  min-width: 700px; /* must match .g-chart */
+  margin-top: 6px;
 }
 
+/* Tick marks */
 .g-tick {
   position: absolute;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: clamp(9px, 1vw, 10px);
   color: var(--muted);
   transform: translateX(-50%);
   top: 4px;
+  white-space: nowrap;
 }
 
 /* ── Process Table ── */
@@ -930,11 +971,6 @@ canvas {
   .btn {
     width: 100%;
     justify-content: center;
-  }
-
-  /* GANTT CHART MOBILE SCROLL */
-  .g-chart {
-    overflow-x: auto;
   }
 
 }
